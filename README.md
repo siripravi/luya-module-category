@@ -6,7 +6,7 @@
 
 [![LUYA](https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg)](https://luya.io)
 
-*LUYA Nestedset module* based on [Yii2 Nestedset Extension](creocoder/yii2-nested-sets)
+*LUYA Nestedset module* based on [Yii2 Nestedset Extension](https://github.com/creocoder/yii2-nested-sets)
 
 ## Installation
 
