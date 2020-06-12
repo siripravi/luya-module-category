@@ -1,0 +1,35 @@
+{
+    "name": "siripravi/luya-module-category",
+    "type": "luya-module",
+    "description": "LUYA Cms module for nested category manipulation",
+	"version" : "1.0",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "require-dev": {
+        "luyadev/luya-testsuite": "^1.0"          
+       
+    },
+    "require": {
+        "creocoder/yii2-nested-sets": "0.9.*"
+    },
+    "autoload" : {
+        "psr-4" : {	    
+            "siripravi\\category\\" : "src/"
+        }
+    },
+    
+	"autoload-dev" : {
+		"psr-4" : {
+			"siripravi\\category\\tests\\" : "tests/"
+		}
+	},
+	"repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+		],
+    "extra": {
+     
+    }
+}

@@ -1,0 +1,9 @@
+{
+  "name": "luya-module-category",
+  "description": "Hierarchial data manipulation using Nestedset for LUYA Cms",
+    "version" : "v0.1-alpha",
+    "require": {
+        "php": "^7.2",
+        "wbraganca/yii2-nested-set-behavior": "dev-master"
+    }
+}
