@@ -25,6 +25,4 @@ Run the import command afterwards:
 ```
 ./luya migrate
 
-## Usage
 
-*Under development. Not meant for production yet.*
