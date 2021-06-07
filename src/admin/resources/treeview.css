@@ -73,7 +73,7 @@ div.parent > .indent:before {
   box-shadow: 0 0 1px #FFF;/* Soften the jagged edge */
   cursor: pointer;
 }
-.ck-nested input[type=checkbox] + label:before, input[type=checkbox]:checked + label:before {
+.ck-nested input[type=checkbox] + label:before, .ck-nested input[type=checkbox]:checked + label:before {
   
  background: none;
   border:2px solid grey;
