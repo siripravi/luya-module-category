@@ -1,3 +1,4 @@
+# luya-category-module
 <p align="center">
   <img src="https://raw.githubusercontent.com/luyadev/luya/master/docs/logo/luya-logo-0.2x.png" alt="LUYA Logo"/>
 </p>
@@ -13,8 +14,14 @@
 Install the extension through composer:
 
 ```sh
-composer require VENDOR/NAME
+composer require siripravi/category
 ```
+
+Add the following to your config module listing:
+
+````
+ 'categoryadmin' => 'siripravi\category\admin\Module',
+````
 
 Run the import command afterwards:
 
@@ -22,6 +29,14 @@ Run the import command afterwards:
 ./luya import
 ```
 
-## Usage
+```sh
+./luya migrate
+```
 
-*Usage description*
+## Module Features
+1. Support for multiple tree creation.
+2. Insert/update/modify a new tree node anywhere in the tree.
+3. Deletion possible for multiple nodes at a time.
+
+
+
