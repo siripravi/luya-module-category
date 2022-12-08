@@ -11,9 +11,9 @@
 
 ## Installation
 This module requires
-````
+
 [Yii2 Nestedset Extension] (https://github.com/creocoder/yii2-nested-sets/)
-````
+
 Install the extension through composer:
 
 ```sh
