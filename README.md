@@ -12,7 +12,7 @@
 ## Installation
 This module requires
 ````
-[Yii2 Nestedset Extension](https://github.com/creocoder/yii2-nested-sets/)
+[Yii2 Nestedset Extension] (https://github.com/creocoder/yii2-nested-sets/)
 ````
 Install the extension through composer:
 
@@ -26,14 +26,14 @@ Add the following to your config module listing:
  'categoryadmin' => 'siripravi\category\admin\Module',
 ````
 
-Run the import command afterwards:
+Run these two commands afterwards:
 
 ```sh
-./luya import
+./vendor/bin/luya import
 ```
 
 ```sh
-./luya migrate
+./vendor/bin/luya migrate
 ```
 
 ## Module Features
