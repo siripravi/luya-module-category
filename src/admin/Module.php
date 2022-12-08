@@ -17,7 +17,7 @@ class Module extends \luya\admin\base\Module {
 
     public function getAdminAssets() {
         return [
-            'siripravi\category\assets\CategoryAdminAsset'
+            'siripravi\category\admin\assets\CategoryAdminAsset'
         ];
     }
 

@@ -1,3 +1,3 @@
 <?php
 
-namespace siripravi/category;
+namespace siripravi\category;
