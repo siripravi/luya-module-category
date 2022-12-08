@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\traits;
+namespace siripravi\category\admin\traits;
 
 /**
  * Trait to enable Soft Deletion for NgRest and ActiveRecord models.

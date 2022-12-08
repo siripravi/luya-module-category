@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\render;
+namespace siripravi\category\admin\render;
 
 use luya\helpers\Json;
 

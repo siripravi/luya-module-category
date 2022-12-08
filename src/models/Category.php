@@ -114,7 +114,7 @@ class Category extends NgRestModel {
     public function ngrestExtraAttributeTypes() {
         return [
             'position' => [
-               // 'class' => \siripravi\category\admin\plugins\RadioList::className(),
+               // 'class' => \siripravi\category\admin\admin\plugins\RadioList::className(),
                 'selectArray',
                 'data' => [
                     self::CREATE_ROOT_NODE => 'Make New Root',

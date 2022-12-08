@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\aws;
+namespace siripravi\category\admin\aws;
 
 use Yii;
 use luya\admin\ngrest\base\ActiveWindow;
@@ -16,7 +16,7 @@ class ToggleRowActiveWindow extends ActiveWindow
     /**
      * @var string The name of the module where the ActiveWindow is located in order to finde the view path.
      */
-    public $module = '@categorytree';
+    public $module = '@category';
 
     /**
      * Default label if not set in the ngrest model.

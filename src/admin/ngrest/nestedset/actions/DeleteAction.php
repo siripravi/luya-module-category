@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\ngrest\nestedset\actions;
+namespace siripravi\category\admin\ngrest\nestedset\actions;
 
 use Yii;
 use yii\web\ServerErrorHttpException;

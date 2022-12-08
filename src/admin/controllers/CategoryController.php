@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\controllers;
+namespace siripravi\category\admin\controllers;
 use siripravi\category\models\Category;
 use luya\helpers\Json;
 
@@ -19,7 +19,7 @@ class CategoryController extends \luya\admin\ngrest\base\Controller {
             'ui-sref' => "default.route({moduleRouteId:'teamadmin', controllerId:'member', actionId:'hello-world'})",
         ]
     ];
-    public $renderCrud = ['view' => 'siripravi\category\render\RenderCategoryCrudView',];
+    public $renderCrud = ['view' => 'siripravi\category\admin\render\RenderCategoryCrudView',];
 
      public function actionTree($id = 1) {
         $key = $id;

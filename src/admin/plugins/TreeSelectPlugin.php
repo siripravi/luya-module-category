@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\plugins;
+namespace siripravi\category\admin\plugins;
 
 use luya\admin\ngrest\base\Plugin;
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\apis;
+namespace siripravi\category\admin\apis;
 
 use siripravi\category\models\Category;
 

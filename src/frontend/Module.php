@@ -1,6 +1,6 @@
 <?php
 
-namespace siripravi\category\frontend;
+namespace siripravi\category\admin\frontend;
 
 /**
  * Category Admin Module.
