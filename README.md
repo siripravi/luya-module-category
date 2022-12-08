@@ -9,11 +9,12 @@
 
 *Luya module for nested set administration*
 
-## Installation
+## Requirement
 This module requires
 
 [Yii2 Nestedset Extension] (https://github.com/creocoder/yii2-nested-sets/)
 
+## Installation
 Install the extension through composer:
 
 ```sh
