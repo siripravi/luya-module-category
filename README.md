@@ -7,7 +7,7 @@
 
 [![LUYA](https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg)](https://luya.io)
 
-*Package description*
+*Luya module for nested set administration*
 
 ## Installation
 
