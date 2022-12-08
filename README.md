@@ -3,14 +3,17 @@
   <img src="https://raw.githubusercontent.com/luyadev/luya/master/docs/logo/luya-logo-0.2x.png" alt="LUYA Logo"/>
 </p>
 
-# LUYA *VENDOR/NAME* module/extension
+# LUYA *siripravi/category*
 
 [![LUYA](https://img.shields.io/badge/Powered%20by-LUYA-brightgreen.svg)](https://luya.io)
 
 *Luya module for nested set administration*
 
 ## Installation
-
+This module requires
+````
+[Yii2 Nestedset Extension](https://github.com/creocoder/yii2-nested-sets)
+````
 Install the extension through composer:
 
 ```sh
