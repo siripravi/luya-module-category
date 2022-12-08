@@ -12,7 +12,7 @@
 ## Installation
 This module requires
 ````
-[Yii2 Nestedset Extension](https://github.com/creocoder/yii2-nested-sets)
+[Yii2 Nestedset Extension](https://github.com/creocoder/yii2-nested-sets/)
 ````
 Install the extension through composer:
 
@@ -41,5 +41,5 @@ Run the import command afterwards:
 2. Insert/update/modify a new tree node anywhere in the tree.
 3. Deletion possible for multiple nodes at a time.
 
-
+… etcetera
 
