@@ -13,7 +13,7 @@
 	
 	"autoload" : {
 		"psr-4" : {
-			"siripravi\category\admin\" : "src/"
+			"siripravi\\category\\admin\\" : "src/"
 		}
 	},
 	
