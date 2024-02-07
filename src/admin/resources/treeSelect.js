@@ -101,7 +101,7 @@ zaa.directive("treeSelect", [
           });
           $scope.getTreeData = function (id) {
             $http
-              .get("admin/api-categoryadmin-category/tree?id=" + id)
+              .get("admin/api-category-category/tree?id=" + id)
               .then(function (r) {
                 $scope.categories = r.data;
                 console.log($scope.categories);
