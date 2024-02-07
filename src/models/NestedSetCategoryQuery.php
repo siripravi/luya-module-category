@@ -7,9 +7,11 @@ use creocoder\nestedsets\NestedSetsQueryBehavior;
 /**
  * @author Wanderson Bragança <wanderson.wbc@gmail.com>
  */
-class NestedSetCategoryQuery extends \yii\db\ActiveQuery {
+class NestedSetCategoryQuery extends \yii\db\ActiveQuery
+{
 
-    public function behaviors() {
+    public function behaviors()
+    {
         return [
             [
                 'class' => NestedSetsQueryBehavior::className(),
@@ -17,7 +19,8 @@ class NestedSetCategoryQuery extends \yii\db\ActiveQuery {
         ];
     }
 
-    public function inPool() {
+    public function inPool()
+    {
         return 'children';
     }
 
@@ -29,27 +32,30 @@ class NestedSetCategoryQuery extends \yii\db\ActiveQuery {
      * 
      */
 
-    public function mark() {
+    public function mark()
+    {
         return $this->saveNode(['is_deleted' => 1]);
     }
 
-    public function prepareTreeData($root = 0, $level = null) {
+    public function prepareTreeData($root = 0, $level = null)
+    {
         $data = array_values($this->prepareLevelData($root, $level));
         return $this->parseData($data);
     }
 
-    private function prepareLevelData($root = 0,$level = null) {
+    private function prepareLevelData($root = 0, $level = null)
+    {
         $res = [];
         if (is_object($root)) {
-           // if ($root->is_deleted == 0) {
-                $res[$root->{$root->idAttribute}] = [
-                    'key' => $root->{$root->idAttribute},
-                    'title' => $root->{$root->nameAttribute},
-                    'is_deleted' => $root->is_deleted,
-                    'level'  => $root->level,
-                    'opened'  => false        
-                ];
-           // }
+            // if ($root->is_deleted == 0) {
+            $res[$root->{$root->idAttribute}] = [
+                'key' => $root->{$root->idAttribute},
+                'title' => $root->{$root->nameAttribute},
+                'is_deleted' => $root->is_deleted,
+                'level'  => $root->level,
+                'opened'  => false
+            ];
+            // }
             if ($level) {
                 foreach ($root->children()->all() as $childRoot) {
                     $aux = $this->prepareLevelData($childRoot, $level - 1);
@@ -96,18 +102,18 @@ class NestedSetCategoryQuery extends \yii\db\ActiveQuery {
         return $res;
     }
 
-    private function parseData(&$data) {
+    private function parseData(&$data)
+    {
         $tree = [];
         foreach ($data as $key => &$item) {
             if (isset($item['children'])) {
                 $item['children'] = array_values($item['children']);
                 $tree[$key] = $this->prepareLevelData($item['children']);
             }
-         //  if ($item['is_deleted'] == 0) {
-                $tree[$key] = $item;
-         //   }
+            //  if ($item['is_deleted'] == 0) {
+            $tree[$key] = $item;
+            //   }
         }
         return $tree;
     }
-
 }

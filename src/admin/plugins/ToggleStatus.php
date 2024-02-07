@@ -28,42 +28,42 @@ class ToggleStatus extends Plugin
      * @var string|integer The value which shoud be picked for angular true state
      */
     public $trueValue = 1;
-    
+
     /**
      * @var string|integer The value which shoud be picked for angular false state
      */
     public $falseValue = 0;
-    
+
     /**
      * @var string The class which is used in the grid overview when state is true.
      */
     public $trueClass = 'material-icons';
-    
+
     /**
      * @var string The class which is used in the grid overview when state is false.
      */
     public $falseClass = 'material-icons';
-    
+
     /**
      * @var string The icon name which is used in the grid overview when state is true.
      */
     public $trueIcon = 'check';
-    
+
     /**
      * @var string The icon name which is used in the grid overview when state is false.
      */
     public $falseIcon = 'close';
-    
+
     /**
      * @var string|integer The default value which should be assigned to the field on creation
      */
     public $initValue = 0;
-    
+
     /**
      * @var boolean Whether the interactive mode is enabled which allows you to toggle the status of the field within the crud list overview.
      */
     public $interactive = true;
-     
+
     /**
      * @inheritdoc
      */
@@ -75,10 +75,10 @@ class ToggleStatus extends Plugin
                 $this->createTag('i', $this->falseIcon, ['ng-if' => "$ngModel == $this->falseValue", 'class' => $this->falseClass]),
             ];
         }
-        
+
         return [
             $this->createTag('i', $this->trueIcon, ['style' => 'cursor:pointer;', 'ng-if' => "$ngModel == $this->trueValue", 'class' => $this->trueClass, 'ng-click' => "toggleStatus(item, '{$this->name}', '{$this->alias}', $ngModel)"]),
-            $this->createTag('i', $this->falseIcon, ['style' => 'cursor:pointer;', 'ng-if' => "$ngModel == $this->falseValue", 'class' => $this->falseClass, ]),
+            $this->createTag('i', $this->falseIcon, ['style' => 'cursor:pointer;', 'ng-if' => "$ngModel == $this->falseValue", 'class' => $this->falseClass,]),
         ];
     }
 

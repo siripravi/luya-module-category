@@ -13,5 +13,4 @@ namespace siripravi\category\admin\frontend;
 class Module extends \luya\base\Module
 {
     public $useAppViewPath = false;
-   
 }

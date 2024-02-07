@@ -7,8 +7,8 @@ trait NestedSetApiControllerTrait
 {
     public function actions()
     {
-        $actions = call_user_func([parent::class,'actions']);
-       
+        $actions = call_user_func([parent::class, 'actions']);
+
         $actions['create'] = [
             'class' => 'siripravi\category\admin\ngrest\nestedset\actions\CreateAction',
             'modelClass' => $this->modelClass,
@@ -26,12 +26,12 @@ trait NestedSetApiControllerTrait
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
         ];
-         $actions['index'] = [
+        $actions['index'] = [
             'class' => 'siripravi\category\admin\admin\ngrest\nestedset\actions\IndexAction',
             'modelClass' => $this->modelClass,
             'checkAccess' => [$this, 'checkAccess'],
         ];
-          
+
         return $actions;
     }
 }

@@ -9,16 +9,18 @@ use luya\admin\ngrest\base\NgRestModel;
 use siripravi\category\admin\traits\ToggleDeleteTrait;
 use creocoder\nestedsets\NestedSetsBehavior;
 
-class Category extends NgRestModel {
-   // use ToggleDeleteTrait;    
+class Category extends NgRestModel
+{
+    // use ToggleDeleteTrait;    
     public $position;
     public $selected = [];
     public $status;   //  color;
 
     public $idAttribute = "id";
     public $nameAttribute = "name";
-    
-    public static function tableName() {
+
+    public static function tableName()
+    {
         return 'category';
     }
 
@@ -29,10 +31,11 @@ class Category extends NgRestModel {
     const INSERT_BEFORE = 'insertBefore';
     const TYPE_DEFAULT = 'default';
 
-    function scenarios() {
+    function scenarios()
+    {
         $scenarios = parent::scenarios();
         $scenarios['restcreate'] = ['name', 'slug', 'position', 'related'];
-        $scenarios['restupdate'] = ['name'];//, 'slug', 'position', 'related','selected'];
+        $scenarios['restupdate'] = ['name']; //, 'slug', 'position', 'related','selected'];
 
         return $scenarios;
     }
@@ -42,7 +45,8 @@ class Category extends NgRestModel {
             self::SCENARIO_DEFAULT => self::OP_ALL,
         ];
     }
-    public function behaviors() {
+    public function behaviors()
+    {
 
         $behaviors = [
             'encode' => [
@@ -59,9 +63,9 @@ class Category extends NgRestModel {
             \yii\behaviors\TimeStampBehavior::className(),
             'tree' => [
                 'class' => NestedSetsBehavior::className(),
-                 'treeAttribute' => 'root',
-                 'depthAttribute' => 'level',
-               // 'hasManyRoots' => true
+                'treeAttribute' => 'root',
+                'depthAttribute' => 'level',
+                // 'hasManyRoots' => true
             ]
         ];
         return array_merge(parent::behaviors(), $behaviors);
@@ -70,14 +74,16 @@ class Category extends NgRestModel {
     /**
      * @inheritdoc
      */
-    public static function ngRestApiEndpoint() {
+    public static function ngRestApiEndpoint()
+    {
         return 'api-category-category';
     }
 
     /**
      * @inheritdoc
      */
-    public function init() {
+    public function init()
+    {
         parent::init();
         $this->on(self::EVENT_BEFORE_INSERT, [$this, 'eventBeforeInsert']);
         $this->on(self::EVENT_BEFORE_UPDATE, [$this, 'eventBeforeUpdate']);
@@ -86,7 +92,8 @@ class Category extends NgRestModel {
     /**
      * @inheritdoc
      */
-    public function eventBeforeUpdate() {
+    public function eventBeforeUpdate()
+    {
 
         $this->updated_at = time();
     }
@@ -94,7 +101,8 @@ class Category extends NgRestModel {
     /**
      * @inheritdoc
      */
-    public function eventBeforeInsert() {
+    public function eventBeforeInsert()
+    {
 
         $this->updated_at = time();
         if (empty($this->created_at)) {
@@ -102,7 +110,8 @@ class Category extends NgRestModel {
         }
     }
 
-    public function extraFields() {
+    public function extraFields()
+    {
         return [
             'field',
             'position',
@@ -111,10 +120,11 @@ class Category extends NgRestModel {
         ];
     }
 
-    public function ngrestExtraAttributeTypes() {
+    public function ngrestExtraAttributeTypes()
+    {
         return [
             'position' => [
-               // 'class' => \siripravi\category\admin\admin\plugins\RadioList::className(),
+                // 'class' => \siripravi\category\admin\admin\plugins\RadioList::className(),
                 'selectArray',
                 'data' => [
                     self::CREATE_ROOT_NODE => 'Make New Root',
@@ -124,18 +134,19 @@ class Category extends NgRestModel {
                     self::INSERT_BEFORE => 'As Previous [same level]',
                 ]
             ],
-            'related' => ['class' => \siripravi\category\admin\plugins\TreePlugin::className()],          
+            'related' => ['class' => \siripravi\category\admin\plugins\TreePlugin::className()],
             'selected' => ['class' => \siripravi\category\admin\plugins\TreeSelectPlugin::className()],
-           
+
         ];
     }
 
-   
+
     /**
      * @inheritdoc
      */
-    public function ngRestAttributeTypes() {
-        return [          
+    public function ngRestAttributeTypes()
+    {
+        return [
             'id'  => 'number',
             'name' => 'text',
             'lft' => 'number',
@@ -156,9 +167,10 @@ class Category extends NgRestModel {
     /**
      * @inheritdoc
      */
-    public function ngRestScopes() {
+    public function ngRestScopes()
+    {
         return [
-            ['list', ['id', 'level', 'name','is_deleted']],
+            ['list', ['id', 'level', 'name', 'is_deleted']],
             [['create'], ['name', 'slug', 'position', 'related']],
             ['delete', false],
             ['update', ['name']],
@@ -168,7 +180,8 @@ class Category extends NgRestModel {
     /**
      * @inheritdoc
      */
-    public function attributeLabels() {
+    public function attributeLabels()
+    {
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
@@ -180,38 +193,45 @@ class Category extends NgRestModel {
             'created_at' => Yii::t('app', 'Created At'),
             'updated_at' => Yii::t('app', 'Updated At'),
             'is_deleted' => Yii::t('app', 'Status'),
-             'status' => Yii::t('app', 'Status'),
+            'status' => Yii::t('app', 'Status'),
         ];
     }
 
-    public function rules() {
+    public function rules()
+    {
         return [
             ['name', 'required'],
             ['level, is_deleted', 'safe']
         ];
     }
 
-    public function ngRestFilters() {
+    public function ngRestFilters()
+    {
         return [
             'Deleted' => self::find()->where(['=', 'is_deleted', 1]),
             'Active' => self::find()->where(['=', 'is_deleted', 0]),
         ];
     }
 
-    public static function find() {
+    public static function find()
+    {
         return new NestedSetCategoryQuery(get_called_class());
     }
 
-    public function ngRestActiveWindows() {
+    public function ngRestActiveWindows()
+    {
         return [
-            ['class' => \siripravi\category\admin\aws\ToggleRowActiveWindow::class, 
+            [
+                'class' => \siripravi\category\admin\aws\ToggleRowActiveWindow::class,
 
-            'label' => '', 'icon' => 'delete_sweep'],
+                'label' => '', 'icon' => 'delete_sweep'
+            ],
         ];
     }
 
-  
-    public function deleteWithChildren() {
+
+    public function deleteWithChildren()
+    {
         if ($this->getIsNewRecord()) {
             throw new Exception('The node can\'t be deleted because it is new.');
         }
@@ -225,9 +245,9 @@ class Category extends NgRestModel {
 
         try {
             $condition = $db->quoteColumnName($this->leftAttribute) . '>='
-                    . $this->getOldAttribute($this->leftAttribute) . ' AND '
-                    . $db->quoteColumnName($this->rightAttribute) . '<='
-                    . $this->getOldAttribute($this->rightAttribute);
+                . $this->getOldAttribute($this->leftAttribute) . ' AND '
+                . $db->quoteColumnName($this->rightAttribute) . '<='
+                . $this->getOldAttribute($this->rightAttribute);
             $condition = $condition . ' AND ' . $db->quoteColumnName('is_deleted') . ' = 0';
             $params = [];
             if ($this->hasManyRoots) {
@@ -258,8 +278,9 @@ class Category extends NgRestModel {
         return true;
     }
 
-    public function mark() {
-       /* $arr = [$this->id];
+    public function mark()
+    {
+        /* $arr = [$this->id];
         if($this->isLeaf()){
             $arr[] = $this->parent()->one();
         }
@@ -270,18 +291,20 @@ class Category extends NgRestModel {
         $this->is_deleted = 0;
 
         return $this->update();
-      
     }
 
-    public function getIsDeletedRecord() {
+    public function getIsDeletedRecord()
+    {
         return ($this->is_deleted == 1);
     }
 
-    public function updateTitle(){
+    public function updateTitle()
+    {
         return $this->update();
     }
 
-    public function deleteSelected($arr){
+    public function deleteSelected($arr)
+    {
 
         if ($this->getIsNewRecord()) {
             throw new Exception('The node can\'t be deleted because it is new.');
@@ -289,35 +312,34 @@ class Category extends NgRestModel {
         if ($this->getIsDeletedRecord()) {
             throw new Exception('The node can\'t be deleted because it is already deleted.');
         }
-       
+
         $db = $this->getDb();
         //return $arr;
         $condition = ['in', 'id', $arr];
-                  
+
         //$condition = [ 'is_deleted' => 0, 'id' => $arr];
         if ($db->getTransaction() === null) {
             $transaction = $db->beginTransaction();
-            try{
-                $result = $this->updateAll(['is_deleted'=> 1], $condition) > 0;
-               if (!$result) {
+            try {
+                $result = $this->updateAll(['is_deleted' => 1], $condition) > 0;
+                if (!$result) {
+                    if (isset($transaction)) {
+                        $transaction->rollback();
+                    }
+
+                    return false;
+                }
+
+                if (isset($transaction)) {
+                    $transaction->commit();
+                }
+            } catch (\Exception $e) {
                 if (isset($transaction)) {
                     $transaction->rollback();
                 }
 
-                return false;
+                throw $e;
             }
-
-            if (isset($transaction)) {
-                $transaction->commit();
-            }
-        } catch (\Exception $e) {
-            if (isset($transaction)) {
-                $transaction->rollback();
-            }
-
-            throw $e;
-          }
-      
-        }    
+        }
     }
 }

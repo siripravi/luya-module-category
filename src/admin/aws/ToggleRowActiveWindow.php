@@ -6,6 +6,7 @@ use Yii;
 use luya\admin\ngrest\base\ActiveWindow;
 use siripravi\category\models\Category;
 use luya\helpers\Json;
+
 /**
  * Toggle Row Active Window.
  *
@@ -35,7 +36,7 @@ class ToggleRowActiveWindow extends ActiveWindow
      */
     public function defaultIcon()
     {
-        return 'extension';    
+        return 'extension';
     }
 
     /**
@@ -49,48 +50,47 @@ class ToggleRowActiveWindow extends ActiveWindow
         return $this->render('index', [
             'model' => $this->model,
             'itemId' => $this->itemId,
-        'treeData' => $data
+            'treeData' => $data
         ]);
     }
 
     public function callbackHelloWorld()
-{
-    $postdata = file_get_contents("php://input");
+    {
+        $postdata = file_get_contents("php://input");
 
-    return $postdata;
-    return $this->sendSuccess("success");
-}
-
- public function callbackAddToList($member)
-{
-    return $this->sendSuccess("success: ".$member);
-}
-
-public function callbackRemoveSelected($member)
-{
-    $selected = json_encode($member);
-    $model = Category::findOne($this->itemId);   
-    
-    $model->scenario = "restupdate";   
-      
-    if(isset($selected) && Json::isJson($selected)){
-        $selArr = Json::decode($selected);
+        return $postdata;
+        return $this->sendSuccess("success");
     }
 
-    $model->load(['selected'=>$selArr], '');
-
-    if(!empty($selArr)){
-        
-        return $model->deleteSelected($selArr);
+    public function callbackAddToList($member)
+    {
+        return $this->sendSuccess("success: " . $member);
     }
-    else if(!empty($model->is_deleted)){
-        if(!$model->mark()){
-            throw new ServerErrorHttpException("Operation did not work: item not found");
+
+    public function callbackRemoveSelected($member)
+    {
+        $selected = json_encode($member);
+        $model = Category::findOne($this->itemId);
+
+        $model->scenario = "restupdate";
+
+        if (isset($selected) && Json::isJson($selected)) {
+            $selArr = Json::decode($selected);
         }
-       
-        return $this->sendSuccess("success! Records deleted successfully");
+
+        $model->load(['selected' => $selArr], '');
+
+        if (!empty($selArr)) {
+
+            return $model->deleteSelected($selArr);
+        } else if (!empty($model->is_deleted)) {
+            if (!$model->mark()) {
+                throw new ServerErrorHttpException("Operation did not work: item not found");
+            }
+
+            return $this->sendSuccess("success! Records deleted successfully");
+        }
+
+        return $this->sendError("Sorry! Something went wrong. Retry.");
     }
-    
-    return $this->sendError("Sorry! Something went wrong. Retry.");
-}
 }

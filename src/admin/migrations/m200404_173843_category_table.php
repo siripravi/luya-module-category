@@ -26,7 +26,6 @@ class m200404_173843_category_table extends Migration
             'created_at'    => $this->integer()->notNull(),
             'updated_at'    => $this->integer()->notNull(),
         ]);
-
     }
 
     /**

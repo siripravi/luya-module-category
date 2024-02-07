@@ -1,4 +1,3 @@
-
 <!--
 	https://jsfiddle.net/Shitsu/0ga0km99/1/
 
@@ -8,10 +7,10 @@
 <div class="wrapper">
   <div class="ck-nested">
     <div ng-class="{opened: item.opened}" ng-include="'table_tree.html'" ng-repeat="(i,item) in categories"></div>
- </div>   
+  </div>
 
- <script id="table_tree.html" type="text/ng-template">
-<div ng-class="{parent: item.children}" 
+  <script id="table_tree.html" type="text/ng-template">
+    <div ng-class="{parent: item.children}" 
 		ng-init="parentScope = $parent.$parent; initCheckbox(item, parentScope.item)">
       <div class="indent" style="padding-left: {{28*item.level}}px" ng-click="item.opened = !item.opened">
       </div>

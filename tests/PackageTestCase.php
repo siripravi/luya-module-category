@@ -1,4 +1,5 @@
 <?php
+
 namespace siripravi\category\admin\tests;
 
 use luya\testsuite\cases\WebApplicationTestCase;

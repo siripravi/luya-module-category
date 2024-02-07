@@ -7,16 +7,19 @@ use yii\helpers\Url;
 use yii\web\ServerErrorHttpException;
 use siripravi\category\models\Category;
 
-class CreateAction extends \luya\admin\ngrest\base\actions\CreateAction {
+class CreateAction extends \luya\admin\ngrest\base\actions\CreateAction
+{
 
-    private function successResponse($model) {
+    private function successResponse($model)
+    {
         $response = \Yii::$app->getResponse();
         $response->setStatusCode(201);
         $id = implode(',', array_values($model->getPrimaryKey(true)));
         $response->getHeaders()->set('Location', Url::toRoute([$this->viewAction, 'id' => $id], true));
     }
 
-    public function run() {
+    public function run()
+    {
         if ($this->checkAccess) {
             call_user_func($this->checkAccess, $this->id);
         }
@@ -94,5 +97,4 @@ class CreateAction extends \luya\admin\ngrest\base\actions\CreateAction {
         }
         return $model;
     }
-
 }

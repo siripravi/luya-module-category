@@ -4,25 +4,28 @@ namespace siripravi\category\admin\apis;
 
 use siripravi\category\models\Category;
 
-class CategoryController extends \luya\admin\ngrest\base\Api {
+class CategoryController extends \luya\admin\ngrest\base\Api
+{
 
     use NestedSetApiControllerTrait;
 
     public $modelClass = 'siripravi\category\models\Category';
 
-    public function actionTree($id = 0) {
+    public function actionTree($id = 0)
+    {
 
         $key = $id;
         $node = Category::find($id)->one();
-     /*   if($node && $node->isLeaf()){
+        /*   if($node && $node->isLeaf()){
             $parent = $node->parent()->one();
             $key = $parent->id;
         }*/
-        
+
         return ($res = Category::find()->prepareTreeData($key));
     }
 
-    protected function prepareItems($activeQuery) {
+    protected function prepareItems($activeQuery)
+    {
 
         $items = [];
         foreach ($activeQuery->all() as $model) {
@@ -35,5 +38,4 @@ class CategoryController extends \luya\admin\ngrest\base\Api {
         }
         return $items;
     }
-
 }

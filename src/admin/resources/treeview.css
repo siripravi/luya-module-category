@@ -3,8 +3,8 @@
   padding: 5px 0;
 }
 
-.material-icons{
-  font-size:1.2em;
+.material-icons {
+  font-size: 1.2em;
 }
 .cell-input,
 .cell-name,
@@ -22,17 +22,17 @@
 
 .indent:before {
   font-family: "Material Icons";
-  
+
   margin-right: 5px;
   content: " ";
   display: inline-block;
 }
 
-div.parent:first-child{
- /* background-color:yellow; */
+div.parent:first-child {
+  /* background-color:yellow; */
 }
-div.parent > .indent:before {  
-  content:"\e315";
+div.parent > .indent:before {
+  content: "\e315";
   /*content: " > ";*/
   -moz-transition: -moz-transform 0.3s;
   -o-transition: -o-transform 0.3s;
@@ -44,9 +44,8 @@ div.parent > .indent:before {
   display: none;
 }
 .ck-nested .opened > div:parent:first-child {
-  background-color:none;
-  border:1px dotted grey;
-
+  background-color: none;
+  border: 1px dotted grey;
 }
 
 .ck-nested .opened > div.parent > .indent:before {
@@ -60,31 +59,31 @@ div.parent > .indent:before {
   display: table-row;
 }
 
- /* background: url(img/checkbox/checkbox-indeterminate-6.png) no-repeat;*/
-.ck-nested input[type=checkbox] + label {
+/* background: url(img/checkbox/checkbox-indeterminate-6.png) no-repeat;*/
+.ck-nested input[type="checkbox"] + label {
   position: relative;
- /* background: url(img/checkbox/checkbox-indeterminate-6.png) no-repeat;*/
+  /* background: url(img/checkbox/checkbox-indeterminate-6.png) no-repeat;*/
   height: 22px;
   width: 22px;
   display: block;
- 
+
   transition: box-shadow 0.4s, border 0.4s;
-  border: solid 2px #FFF;
-  box-shadow: 0 0 1px #FFF;/* Soften the jagged edge */
+  border: solid 2px #fff;
+  box-shadow: 0 0 1px #fff; /* Soften the jagged edge */
   cursor: pointer;
 }
-.ck-nested input[type=checkbox] + label:before, .ck-nested input[type=checkbox]:checked + label:before {
-  
- background: none;
-  border:2px solid grey;
+.ck-nested input[type="checkbox"] + label:before,
+.ck-nested input[type="checkbox"]:checked + label:before {
+  background: none;
+  border: 2px solid grey;
   height: 20px;
   width: 22px;
-}  
+}
 /* Provide a border when hovered and when the checkbox before it is checked */
 
-.ck-nested input[type=checkbox] + label:hover,
-.ck-nested input[type=checkbox]:checked + label {
-/*  border: solid 2px #F00;*/
+.ck-nested input[type="checkbox"] + label:hover,
+.ck-nested input[type="checkbox"]:checked + label {
+  /*  border: solid 2px #F00;*/
   /*box-shadow: 0 0 1px #F00;  */
   /* Soften the jagged edge */
 }
@@ -93,9 +92,8 @@ div.parent > .indent:before {
 - Center the content
 */
 
-.ck-nested input[type=checkbox]:checked + label:after {
-
-  content: '\2714';
+.ck-nested input[type="checkbox"]:checked + label:after {
+  content: "\2714";
   /*content is required, though it can be empty - content: '';*/
   height: 1em;
   position: absolute;
@@ -104,7 +102,7 @@ div.parent > .indent:before {
   bottom: 0;
   right: 0;
   margin: auto;
-  color: #F00;
+  color: #f00;
   line-height: 1;
   font-size: 18px;
   text-align: center;

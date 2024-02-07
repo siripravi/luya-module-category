@@ -48,11 +48,11 @@ trait ToggleDeleteTrait
     public static function internalAndWhere()
     {
         $query = [];
-        
+
         foreach (static::fieldStateDescriber() as $field => $value) {
             $query[$field] = (is_array($value)) ? $value[1] : !$value;
         }
-        
+
         return $query;
     }
 
@@ -65,7 +65,7 @@ trait ToggleDeleteTrait
         $where = static::internalAndWhere();
         return empty($where) ? parent::ngRestFind() : parent::ngRestFind()->andWhere($where);
     }
-    
+
     /**
      * Overrides the find() method of the ActiveRecord
      * @return \yii\db\ActiveQuery
@@ -84,16 +84,16 @@ trait ToggleDeleteTrait
     public function delete()
     {
         $result = false;
-        
+
         if ($this->beforeDelete()) {
             $this->updateAttributes(static::internalUpdateValues());
             $result = true;
             $this->afterDelete();
         }
-        
+
         return $result;
     }
-    
+
     /**
      * Evalate the values to update.
      *
