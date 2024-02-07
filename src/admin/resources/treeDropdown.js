@@ -118,7 +118,7 @@ zaa.directive("treeDropdown", [
           };
           $scope.getTreeData = function (id) {
             $http
-              .get("admin/api-categorytree-category/tree?id=" + id)
+              .get("admin/api-category-category/tree?id=" + id)
               .then(function (r) {
                 $scope.items = r.data;
               });
