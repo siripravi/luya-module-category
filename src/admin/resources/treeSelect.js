@@ -158,7 +158,7 @@ zaa.directive("treeSelect", ['$compile','$filter', function ($compile,$filter,$s
             };           
 
         }] ,
-        templateUrl: 'category/category/tree-select'
+        templateUrl: 'categoryadmin/category/tree-select'
         
         };
     }]);
