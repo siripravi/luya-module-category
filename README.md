@@ -18,7 +18,7 @@ This module requires
 Install the extension through composer:
 
 ```sh
-composer require siripravi/category
+composer require siripravi/luya-module-category
 ```
 
 Add the following to your config module listing:
