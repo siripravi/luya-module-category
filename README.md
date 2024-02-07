@@ -15,8 +15,10 @@ This module requires
 [Yii2 Nestedset Extension] (https://github.com/creocoder/yii2-nested-sets/)
 
 ## Installation
+```sh
+composer require creocoder/yii2-nested-sets
 Install the extension through composer:
-
+```
 ```sh
 composer require siripravi/luya-module-category
 ```
