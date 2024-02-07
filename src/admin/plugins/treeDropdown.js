@@ -118,7 +118,7 @@ zaa.directive("treeDropdown", ['$compile', function ($compile,$sanitize) {
                     }
                     
                 }],
-            templateUrl: 'category/category/category-tree'
+            templateUrl: 'categoryadmin/category/category-tree'
         };
     }]);
 
