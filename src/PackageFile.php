@@ -1,0 +1,3 @@
+<?php
+
+namespace siripravi\category;

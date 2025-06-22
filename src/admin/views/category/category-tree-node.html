@@ -1,0 +1,12 @@
+<!-- category-tree-node.html -->
+<div class="ck-nested">
+    <div ng-repeat="item in nodes" class="ck-node" ng-if="item.is_deleted == 0">
+        <a href="javascript:void(0);" ng-click="selectNode(item)">
+            {{ item.title }} <span class="text-muted">[click]</span>
+        </a>
+        <div ng-if="item.children && item.children.length > 0" 
+             ng-include="'category-tree-node.html'" 
+             ng-init="nodes = item.children">
+        </div>
+    </div>
+</div>

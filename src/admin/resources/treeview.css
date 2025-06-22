@@ -1,0 +1,109 @@
+@charset "UTF-8";
+.parent {
+  padding: 5px 0;
+}
+
+.material-icons {
+  font-size: 1.2em;
+}
+.cell-input,
+.cell-name,
+.indent {
+  display: inline-block;
+}
+
+.ck-nested .parent > .cell-name {
+  cursor: pointer;
+}
+
+.ck-nested .parent > .cell-name > .indent {
+  margin-right: 5px;
+}
+
+.indent:before {
+  font-family: "Material Icons";
+
+  margin-right: 5px;
+  content: " ";
+  display: inline-block;
+}
+
+div.parent:first-child {
+  /* background-color:yellow; */
+}
+div.parent > .indent:before {
+  content: "\e315";
+  /*content: " > ";*/
+  -moz-transition: -moz-transform 0.3s;
+  -o-transition: -o-transform 0.3s;
+  -webkit-transition: -webkit-transform 0.3s;
+  transition: transform 0.3s;
+}
+
+.ck-nested .children {
+  display: none;
+}
+.ck-nested .opened > div:parent:first-child {
+  background-color: none;
+  border: 1px dotted grey;
+}
+
+.ck-nested .opened > div.parent > .indent:before {
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.ck-nested .opened > .children {
+  display: table-row;
+}
+
+/* background: url(img/checkbox/checkbox-indeterminate-6.png) no-repeat;*/
+.ck-nested input[type="checkbox"] + label {
+  position: relative;
+  /* background: url(img/checkbox/checkbox-indeterminate-6.png) no-repeat;*/
+  height: 22px;
+  width: 22px;
+  display: block;
+
+  transition: box-shadow 0.4s, border 0.4s;
+  border: solid 2px #fff;
+  box-shadow: 0 0 1px #fff; /* Soften the jagged edge */
+  cursor: pointer;
+}
+.ck-nested input[type="checkbox"] + label:before,
+.ck-nested input[type="checkbox"]:checked + label:before {
+  background: none;
+  border: 2px solid grey;
+  height: 20px;
+  width: 22px;
+}
+/* Provide a border when hovered and when the checkbox before it is checked */
+
+.ck-nested input[type="checkbox"] + label:hover,
+.ck-nested input[type="checkbox"]:checked + label {
+  /*  border: solid 2px #F00;*/
+  /*box-shadow: 0 0 1px #F00;  */
+  /* Soften the jagged edge */
+}
+/* 
+- Create a pseudo element :after when checked and provide a tick
+- Center the content
+*/
+
+.ck-nested input[type="checkbox"]:checked + label:after {
+  content: "\2714";
+  /*content is required, though it can be empty - content: '';*/
+  height: 1em;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  color: #f00;
+  line-height: 1;
+  font-size: 18px;
+  text-align: center;
+}
